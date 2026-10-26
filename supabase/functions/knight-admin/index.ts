@@ -25,6 +25,16 @@ Deno.serve(async(req:Request)=>{try{
  if(insertError){await db.auth.admin.deleteUser(data.user.id);throw fail(503,'登録に失敗しました。時間をおいてやり直してください。')}
  return reply({ok:true});
  }
+ if(body.action==='delete'){
+ if(typeof body.userId!=='string'||body.userId===MASTER_ID)throw fail(403,'マスターアカウントは削除できません。');
+ const {data:account,error:accountError}=await db.from('knight_accounts').select('user_id,managed_by_knight').eq('user_id',body.userId).maybeSingle();
+ if(accountError||!account?.managed_by_knight)throw fail(403,'覚えKnightで作成した利用者だけを削除できます。');
+ const {data:target,error:targetError}=await db.auth.admin.getUserById(body.userId);
+ if(targetError||!target.user?.app_metadata?.knight_managed)throw fail(403,'この利用者は削除の対象にできません。');
+ const {error:revokeError}=await db.from('knight_sessions').delete().eq('user_id',body.userId);if(revokeError)throw fail(503,'ログイン状態を無効にできませんでした。');
+ const {error:deleteError}=await db.auth.admin.deleteUser(body.userId,false);if(deleteError)throw fail(503,'削除できませんでした。時間をおいてやり直してください。');
+ return reply({ok:true});
+ }
  if(body.action==='update'){
  if(body.userId===MASTER_ID)throw fail(403,'マスターのメールアドレス・認証情報は、この画面では変更できません。');
  const {data:account,error}=await db.from('knight_accounts').select('*').eq('user_id',body.userId).maybeSingle();if(error||!account||!account.managed_by_knight)throw fail(403,'このアプリで作成した利用者だけを変更できます。');
