@@ -4,3 +4,7 @@ outputs/
 *.tar.gz
 .env
 .env.*
+
+.vercel/
+.vercel
+.env*
