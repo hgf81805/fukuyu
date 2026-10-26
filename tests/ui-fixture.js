@@ -3,6 +3,7 @@ const master={id:'1e51d88b-9657-47b0-86d3-57f25e3bca38',email:'hgf51805@gmail.co
 const user={id:'33333333-3333-4333-8333-333333333333',email:'learner@example.invalid',isMaster:false};
 const currentUser=process.env.KNIGHT_UI_ROLE==='user'?user:master;
 let loggedIn=true,revision=0,learning=null;
+if(process.env.KNIGHT_UI_PROGRESS==='1'){const at=days=>{const d=new Date();d.setDate(d.getDate()-days);d.setHours(0,0,0,0);return d.getTime()};learning={items:[{id:'progress-demo',title:'毎日の学びを少しずつ',body:'小さな復習の積み重ね。',category:'読書',created:at(20),next:Date.now()+86400000,step:2,scheduleVersion:2,count:38}],logs:Array.from({length:38},(_,i)=>({id:'progress-demo',at:at(i<20?i%6:8+i%11),grade:i%3?'good':'again'})),categories:['語学','仕事','読書','その他']}}
 const accounts=[{user_id:master.id,email:master.email,display_name:'管理者',password:'DemoMaster-Only123',active:true,managed_by_knight:false,created_at:new Date().toISOString()},{user_id:'33333333-3333-4333-8333-333333333333',email:'learner@example.invalid',display_name:'山田 太郎',password:'DemoLearner-12345',active:true,managed_by_knight:true,created_at:new Date().toISOString()}];
 export function handleFixture(req,res,name){
  if(name==='session'){if(req.method==='DELETE'){loggedIn=false;return res.json({ok:true})}if(req.method==='POST'){loggedIn=true;return res.json({user:currentUser})}return loggedIn?res.json({user:currentUser}):res.status(401).json({error:'ログインしてください。'})}
