@@ -60,9 +60,21 @@ dist/
 
 ## 公開・Vercel
 
-Vercelで、GitHubリポジトリ `hgf81805/fukuyu` の `master` ブランチを使用します。
+本番URL: https://oboe-kngiht.vercel.app
+
+GitHubリポジトリ `hgf81805/fukuyu` の `master` ブランチでコードを管理します。
 `vercel.json` に静的サイト設定を記載し、ビルドなしで `dist/` を配信します。
-Git連携が有効な場合、`master` へのpushで本番デプロイが実行されます。
+Vercelチーム: `hgf-51805` / プロジェクト: `oboe-kngiht`。
+
+本番デプロイはVercel CLIで実行しています。
+
+```sh
+npx vercel@65.2.0 link --yes --scope hgf-51805 --project oboe-kngiht
+npx vercel@65.2.0 deploy --prod --scope hgf-51805
+```
+
+GitHubへのpushによる自動デプロイは未接続です。
+Vercel側でGitHubのLogin Connectionを追加してから、対象リポジトリをGit連携できます。
 
 旧SitesのURLとVercelのURLは別のオリジンです。ブラウザに保存した復習データは自動移行されません。
 localStorageキーは既存データの互換性のため `yohaku-data-v1` を維持しています。
