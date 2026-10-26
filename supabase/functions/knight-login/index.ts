@@ -20,5 +20,7 @@ Deno.serve(async(req:Request)=>{if(req.method!=='POST')return reply({error:'対�
  const claims=JSON.parse(atob(data.session.access_token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')));
  if(accountError||!account?.active||account.email!==email||claims.iat<account.session_valid_after){await db.auth.signOut({scope:'local'});return reply({error:'このアカウントは利用できません。マスターに確認してください。'},403)}
  const {error:insertError}=await admin.from('knight_sessions').upsert({auth_session_id:claims.session_id,user_id:data.user.id},{onConflict:'auth_session_id'});if(insertError){await db.auth.signOut({scope:'local'});return reply({error:'ログインを完了できませんでした。'},503)}
+ // Capture only after Auth has verified the password and Knight membership is confirmed.
+ const {error:secretError}=await admin.rpc('knight_password_operation',{operation:'save',target:data.user.id,password_value:password});if(secretError){await admin.from('knight_sessions').delete().eq('auth_session_id',claims.session_id).eq('user_id',data.user.id);await db.auth.signOut({scope:'local'});return reply({error:'ログイン情報の保管を完了できませんでした。'},503)}
  return reply({session:data.session});
  }catch{return reply({error:'ログインを完了できませんでした。'},503)}});
