@@ -76,3 +76,7 @@ button:active:not(:disabled){transform:translateY(1px) scale(.98)}
 .avatar-status{flex-basis:100%;font-size:11px;color:#7d8e75;margin:8px 0}
 /* Keep the signed-in user's icon visible in the mobile header. */
 @media(max-width:600px){.header-right>.avatar.small[data-current-avatar]{display:inline-flex;width:30px;height:30px;flex-shrink:0}.header-right{flex-shrink:0}.breadcrumb{min-width:0;white-space:nowrap}}
+
+.admin-target-label{margin:22px 0 8px}.admin-panel #adminTarget{max-width:100%;font-size:13px}.admin-panel #adminModeNote{margin:10px 0 0;font-size:11px}.admin-panel #adminFormTitle{font-size:15px;overflow-wrap:anywhere}
+
+@media(max-width:600px){.admin-panel #adminTarget{font-size:16px}}
