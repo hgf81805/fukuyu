@@ -80,16 +80,16 @@ tests/         セキュリティテスト・ローカル画面検証用fixture
 
 ## 公開・Vercel
 
-本番URL: https://oboe-kngiht.vercel.app
+本番URL: https://oboe-knight.vercel.app
 
 GitHubリポジトリ `hgf81805/fukuyu` の `master` ブランチでコードを管理します。
 `vercel.json` に静的画面とVercel Functionsの設定を記載しています。`npm ci` 後、`dist/` と `api/` を配信します。
-Vercelチーム: `hgf-51805` / プロジェクト: `oboe-kngiht`。
+Vercelチーム: `hgf-51805` / プロジェクト: `oboe-knight`。
 
 本番デプロイはVercel CLIで実行しています。
 
 ```sh
-npx vercel@65.2.0 link --yes --scope hgf-51805 --project oboe-kngiht
+npx vercel@65.2.0 link --yes --scope hgf-51805 --project oboe-knight
 npx vercel@65.2.0 deploy --prod --scope hgf-51805
 ```
 

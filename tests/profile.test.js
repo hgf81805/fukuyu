@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {profileHandler} from '../api/profile.js';
 import {userInfo} from '../lib/auth.js';
 const user={id:'self-user-id',email:'learner@example.invalid'};
-const request=body=>({method:'PATCH',headers:{host:'oboe-kngiht.vercel.app',origin:'https://oboe-kngiht.vercel.app','content-type':'application/json'},body});
+const request=body=>({method:'PATCH',headers:{host:'oboe-knight.vercel.app',origin:'https://oboe-knight.vercel.app','content-type':'application/json'},body});
 const response=()=>({statusCode:200,setHeader(){},status(n){this.statusCode=n;return this},json(body){this.body=body}});
 function fixture(error=null){const calls=[];let saved;const db={from(table){calls.push(['table',table]);return {update(values){calls.push(['update',values]);saved={...values};return this},eq(column,id){calls.push(['where',column,id]);return this},select(columns){calls.push(['select',columns]);return this},async maybeSingle(){return {data:{display_name:'古い名前',avatar_data:'',...saved},error}}}}};return {calls,run:profileHandler(async()=>({user,db,account:{display_name:'古い名前'}}))}}
 test('self profile writes only the authenticated user name and returns the saved profile',async()=>{
