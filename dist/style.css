@@ -88,3 +88,8 @@ button:active:not(:disabled){transform:translateY(1px) scale(.98)}
 
 .login-story .login-headline{font-style:italic;transform:rotate(-2deg);transform-origin:left center;animation:login-headline-float 6s ease-in-out infinite}
 @keyframes login-headline-float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-7px) rotate(-1deg)}}
+
+#add,#start{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:50px;font-size:14px;line-height:1.5}
+#add>span,#start>span{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;margin:0;font-size:22px;line-height:1}
+#start{gap:28px}
+@media(max-width:360px){#start{gap:16px}}
