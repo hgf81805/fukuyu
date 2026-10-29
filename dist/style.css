@@ -85,3 +85,6 @@ button:active:not(:disabled){transform:translateY(1px) scale(.98)}
 
 .login-story .login-headline{font-family:'Noto Sans JP',sans-serif;font-size:clamp(26px,3vw,42px);font-weight:500;line-height:1.65;letter-spacing:.06em;color:#b5c8a4;margin:20px 0;overflow-wrap:normal}
 @media(max-width:850px){.login-story .login-headline{font-size:clamp(24px,4.5vw,34px);line-height:1.55;margin:12px 0}}
+
+.login-story .login-headline{font-style:italic;transform:rotate(-2deg);transform-origin:left center;animation:login-headline-float 6s ease-in-out infinite}
+@keyframes login-headline-float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-7px) rotate(-1deg)}}
