@@ -99,3 +99,6 @@ button:active:not(:disabled){transform:translateY(1px) scale(.98)}
 .settings-nav-icon{display:block;width:1em;height:1em}.nav.settings>span:first-child{display:inline-flex;align-items:center;justify-content:center}
 
 .category-panel .category-actions{flex-wrap:wrap;gap:6px}.category-panel .category-move{width:44px;min-height:44px;padding:0;font-size:18px}
+
+.hero-copy{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:18px}.hero .hero-label{display:block;font-family:'Noto Sans JP',sans-serif;font-size:clamp(26px,3vw,38px);font-weight:500;letter-spacing:.1em;line-height:1.4;margin:0 0 6px;color:#cfdbb8}.hero-copy #start{margin-top:0}.hero-copy .hero-foot{margin-top:0}
+@media(max-width:600px){.hero .hero-label{font-size:clamp(24px,6.5vw,32px);letter-spacing:.08em}}
