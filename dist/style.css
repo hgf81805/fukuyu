@@ -95,3 +95,5 @@ button:active:not(:disabled){transform:translateY(1px) scale(.98)}
 @media(max-width:360px){#start{gap:16px}}
 
 .toast.visible{display:flex;align-items:center;gap:16px;pointer-events:auto}.toast #toastMessage{min-width:0;overflow-wrap:anywhere}.toast #toastClose{flex-shrink:0;background:transparent;color:inherit;border:1px solid #ffffff66;border-radius:5px;min-height:40px;padding:6px 12px;font-size:12px}.toast #toastClose:focus-visible{outline:2px solid #eceddb;outline-offset:3px}
+
+.settings-nav-icon{display:block;width:1em;height:1em}.nav.settings>span:first-child{display:inline-flex;align-items:center;justify-content:center}
