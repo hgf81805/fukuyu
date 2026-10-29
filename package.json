@@ -4,6 +4,12 @@
   "private": true,
   "type": "module",
   "description": "覚えKnight — 記憶を守る復習アプリ",
-  "scripts": {"test":"node --test tests/*.test.js","dev":"node scripts/dev-server.js"},
-  "dependencies": {"@supabase/supabase-js":"2.118.0"}
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "dev": "node scripts/dev-server.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.118.0",
+    "heic-to": "1.6.7"
+  }
 }
