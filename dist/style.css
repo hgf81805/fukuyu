@@ -82,3 +82,6 @@ button:active:not(:disabled){transform:translateY(1px) scale(.98)}
 @media(max-width:600px){.admin-panel #adminTarget{font-size:16px}}
 
 .review-panel #dueList{margin-top:16px}
+
+.login-story .login-headline{font-family:'Noto Sans JP',sans-serif;font-size:clamp(26px,3vw,42px);font-weight:500;line-height:1.65;letter-spacing:.06em;color:#b5c8a4;margin:20px 0;overflow-wrap:normal}
+@media(max-width:850px){.login-story .login-headline{font-size:clamp(24px,4.5vw,34px);line-height:1.55;margin:12px 0}}
